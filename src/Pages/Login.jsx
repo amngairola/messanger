@@ -1,15 +1,13 @@
-import { Link } from "react-router-dom";
-import { Input, Button } from "../Index";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Button } from "../Index";
 
 function Login() {
   const initialFormData = {
-    email: " ",
-    password: " ",
+    email: "",
+    password: "",
   };
 
   const [formData, setFormData] = useState(initialFormData);
-
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -23,20 +21,10 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
+    // Reset form data to initial empty state after submission
     setFormData(initialFormData);
-    // if (!validateEmail(fromData.email)) {
-    //   setError("Please enter a valid email");
-    // } else {
-    //   console.log(fromData);
-    //   setError("");
-    // }
-
+    // Clear any error messages
     setError("");
-  };
-
-  const validateEmail = (email) => {
-    const pattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    return pattern.test(email);
   };
 
   return (
@@ -47,37 +35,50 @@ function Login() {
         </h2>
         <p className="mt-2 text-center text-base text-black/60">
           Don&apos;t have any account?&nbsp;
-          {/* <Link
-            to="/signup"
-            className="font-medium text-primary transition-all duration-200 hover:underline"
-          >
-            Sign Up
-          </Link> */}
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
         <form onSubmit={handleSubmit} className="mt-8">
           <div className="space-y-5">
-            <Input
-              label="Email: "
-              placeholder="Enter your email"
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-            />
-            <Input
-              label="Password: "
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={handleChange}
-            />
-            <Button type="submit">Login</Button>
+            <div className="mb-4">
+              <label
+                className="block text-sm text-gray-700 font-bold mb-2"
+                htmlFor="email"
+              >
+                Email:
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <div className="mb-4">
+              <label
+                className="block text-sm text-gray-700 font-bold mb-2"
+                htmlFor="password"
+              >
+                Password:
+              </label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                value={formData.password}
+                onChange={handleChange}
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+            </div>
+            <Button type="submit"></Button>
           </div>
         </form>
       </div>
     </div>
   );
 }
+
 export default Login;
