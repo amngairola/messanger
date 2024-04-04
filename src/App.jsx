@@ -1,11 +1,18 @@
-import { Login, Singup } from "./Index";
+import { Login } from "./Index";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <Login />
-      <Singup />
-    </>
+    <div className="font-nunito">
+      <Router>
+        {/* <AuthProvider> */}
+        <Routes>
+          {/* <Route path="/chats" component={Chats} />*/}
+          <Route path="/" element={<Login />} />
+        </Routes>
+        {/* </AuthProvider> */}
+      </Router>
+    </div>
   );
 }
 

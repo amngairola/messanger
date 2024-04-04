@@ -1,6 +1,6 @@
 import Input from "./components/Input";
 import Login from "./Pages/Login";
-import Singup from "./Pages/Singup";
+import Home from "./Pages/Home";
 import Button from "./components/Button";
 
-export { Input, Login, Singup, Button };
+export { Input, Login, Home, Button };
