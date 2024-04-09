@@ -1,13 +1,13 @@
 import React from "react";
 
-function Button({ type, ...props }) {
+function Button({ type, child, ...props }) {
   return (
     <button
-      className="bg-red-200 w-14 rounded-lg shadow-md px-4 py-2"
+      className="bg-red-200 w-16 rounded-lg shadow-md px-2 py-2 hover:bg-blue-200"
       type={type}
       {...props}
     >
-      click
+      {child}
     </button>
   );
 }

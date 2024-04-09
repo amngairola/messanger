@@ -44,3 +44,15 @@ onChange={(e) => setPassword(e.target.value)}
 }
 
 export default Login;
+
+//https://chatengine.io/projects/d79c8c4f-f783-4602-9552-99c68169cb6e
+
+//https://api.chatengine.dev/
+
+//'https://api.chatengine.io/
+
+//PRIVATE-KEY - f485d95b-db30-4d11-a7f1-edf3d0ff9848
+
+// git doc - https://github.com/axios/axios/discussions/4601
+
+// chat doc - https://rest.chatengine.io/
