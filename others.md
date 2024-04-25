@@ -56,3 +56,8 @@ export default Login;
 // git doc - https://github.com/axios/axios/discussions/4601
 
 // chat doc - https://rest.chatengine.io/
+
+// POSTMAN : https://web.postman.co/workspace/My-Workspace~c0729936-343f-4cc1-8b7d-c9f283bdf182/request/create?requestId=8a4c5493-7b19-42d2-b311-3e344f73366e
+
+
+//gogle chat - https://developers.google.com/workspace/chat/quickstart/gcf-app

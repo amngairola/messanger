@@ -8,3 +8,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <App />
   </React.StrictMode>
 );
+
+//https://colorhunt.co/palette/fff7fc8b93ff5755feff71cd
