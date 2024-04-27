@@ -59,5 +59,8 @@ export default Login;
 
 // POSTMAN : https://web.postman.co/workspace/My-Workspace~c0729936-343f-4cc1-8b7d-c9f283bdf182/request/create?requestId=8a4c5493-7b19-42d2-b311-3e344f73366e
 
-
 //gogle chat - https://developers.google.com/workspace/chat/quickstart/gcf-app
+
+///auth guide - https://github.com/firebase/snippets-web/tree/1abb6ce1a784ae5552946dff5f1f5aab7dcbda30/snippets/auth-next/manage
+
+//https://blog.logrocket.com/user-authentication-firebase-react-apps/

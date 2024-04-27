@@ -1,7 +1,12 @@
-import React from "react";
+import { Spinner } from "@material-tailwind/react";
+import "../index.css";
 
 function Loading() {
-  return <div>Loading....</div>;
+  return (
+    <div class="loader-wrapper">
+      <div class="loader"></div>
+    </div>
+  );
 }
 
 export default Loading;

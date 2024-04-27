@@ -11,11 +11,6 @@ function Nav() {
   const { user } = useAuth();
   const navigateTo = useNavigate();
 
-  // const handleLogOut = async () => {
-  //   await auth.signOut();
-  //   navigateTo("/");
-  // };
-
   return (
     <div className=" bg-primary rounded-md w-full flex flex-row justify-between py-4 px-8">
       <div className="align-left ">
@@ -26,7 +21,6 @@ function Nav() {
         />
       </div>
       <div className="align-right">
-        {/* <Button child={"Logout"} onClick={handleLogOut} /> */}
         <Menubtn user={user} />
       </div>
     </div>

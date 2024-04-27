@@ -4,7 +4,21 @@ import Button from "./components/Button";
 import Nav from "./components/Nav";
 import Loading from "./components/Loading";
 import Img from "./components/Img";
-import Loader from "./components/Loader";
-import Menubtn from "./components/Menubtn";
 
-export { Login, Chats, Button, Nav, Loading, Img, Loader, Menubtn };
+import Menubtn from "./components/Menubtn";
+import ErrorDialog from "./components/ErrorDialog";
+import Allusers from "./components/Allusers";
+import Message from "./components/Message";
+
+export {
+  Login,
+  Chats,
+  Button,
+  Nav,
+  Loading,
+  Img,
+  Menubtn,
+  Allusers,
+  ErrorDialog,
+  Message,
+};

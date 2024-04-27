@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Loading, Nav } from "../Index";
+import { Button, Loading, Nav, Allusers, Message } from "../Index";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
 
@@ -18,7 +18,8 @@ export default function Chats() {
       ) : (
         <div>
           <Nav />
-          <p>Welcome {user.displayName}`</p>
+          <Allusers />
+          <Message />
         </div>
       )}
     </div>

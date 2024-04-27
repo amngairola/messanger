@@ -1,42 +1,48 @@
 import React, { useState } from "react";
-import { Select, Option } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
-import { useAuth } from "../context/AuthContext";
 
 function Menubtn({ user }) {
-  const { displayName } = user;
+  const { displayName, photoURL } = user;
   const navigateTo = useNavigate();
   const { signOut } = auth;
-  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
 
   const handleLogOut = async () => {
-    console.log("clicked");
-    await signOut();
+    setShowOptions(!showOptions);
+    await auth.signOut();
     navigateTo("/");
   };
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
   return (
-    <div className="flex flex-col gap-6 bg-red-500">
-      <div onClick={toggleDropdown} className="cursor-pointer">
-        {displayName}
-      </div>
-      {dropdownOpen && (
-        <Select label={displayName}>
-          <Option value="logout" onClick={handleLogOut}>
-            <div className="flex items-center justify-between">
-              <button className="text-red-500 hover:text-red-700 focus:outline-none">
-                Sign out
-              </button>
-            </div>
-          </Option>
-        </Select>
+    <>
+      <box-icon
+        name="menu"
+        onClick={() => setShowOptions(!showOptions)}
+      ></box-icon>
+
+      {showOptions && (
+        <div
+          className="absolute top-14 right-1
+        bg-background border border-gray-200 rounded-lg shadow-lg p-2  max-w-30 "
+        >
+          <div className="flex items-center justify-center mb-4">
+            <img
+              src={photoURL}
+              alt="User Avatar"
+              className="w-8 h-8 rounded-full mr-2"
+            />
+            <span className="text-gray-800">{displayName}</span>
+          </div>
+          <button
+            className="text-gray-800 hover:text-primary bg-red-300 rounded-lg cursor-pointer shadow-lg block w-full text-center"
+            onClick={handleLogOut}
+          >
+            Logout
+          </button>
+        </div>
       )}
-    </div>
+    </>
   );
 }
 
