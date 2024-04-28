@@ -10,7 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@ant-design/icons": "^5.3.6",
     "@material-tailwind/react": "^2.1.9",
     "@reach/menu-button": "^0.18.0",
     "@react-three/drei": "^9.105.4",
