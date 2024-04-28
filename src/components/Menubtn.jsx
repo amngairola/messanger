@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../Firebase";
+import menu from "../assets/bx-menu.svg";
 
 function Menubtn({ user }) {
   const { displayName, photoURL } = user;
@@ -17,10 +18,11 @@ function Menubtn({ user }) {
 
   return (
     <>
-      <box-icon
-        name="menu"
+      <img
+        src={menu}
         onClick={() => setShowOptions(!showOptions)}
-      ></box-icon>
+        className="w-8 h-8"
+      />
 
       {showOptions && (
         <div

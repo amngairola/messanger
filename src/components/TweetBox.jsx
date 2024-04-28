@@ -5,7 +5,6 @@ function TweetBox({ message }) {
   const { user } = useAuth();
 
   const messageStyle = {
-    // Adjust the max-width and max-height based on your design preferences
     maxWidth: "400px",
     maxHeight: "200px",
     overflow: "hidden",
