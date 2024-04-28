@@ -9,9 +9,10 @@ function Menubtn({ user }) {
   const [showOptions, setShowOptions] = useState(false);
 
   const handleLogOut = async () => {
-    setShowOptions(!showOptions);
     await auth.signOut();
     navigateTo("/");
+    console.log("clicked");
+    setShowOptions(!showOptions);
   };
 
   return (
