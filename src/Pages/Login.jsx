@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { useAuth } from "../context/AuthContext";
-
+import login from "../assets/login.svg";
 import { auth, gitProvider, googleProvider } from "../Firebase";
 import { signInWithPopup } from "firebase/auth";
 import { ErrorDialog, Img } from "../Index";
@@ -89,7 +89,7 @@ function Login() {
 
       <div id="right" className="w-1/2">
         <div className="flex justify-center items-center h-screen bg-gray-200">
-          <Img />
+          <Img src={login} alt={"login img"} />
         </div>
       </div>
     </div>

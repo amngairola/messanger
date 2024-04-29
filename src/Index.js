@@ -10,6 +10,7 @@ import ErrorDialog from "./components/ErrorDialog";
 import Allusers from "./components/Allusers";
 import Message from "./components/Message";
 import TweetBox from "./components/TweetBox";
+import NavEle from "./components/NavEle";
 
 export {
   Login,
@@ -23,4 +24,5 @@ export {
   ErrorDialog,
   Message,
   TweetBox,
+  NavEle,
 };

@@ -40,29 +40,24 @@ export default function Chats() {
   }, []);
 
   return (
-    <div className="w-full p-2">
+    <div className="w-full h-full">
       {!user ? (
         <Loading />
       ) : (
         <>
-          <Nav />
-          <div className="h-1/2 w-full overflow-hidden  justify-center flex items-center">
-            <div
-              className="overflow-y-auto h-full"
-              style={{ maxHeight: "calc(100vh - 15vh)" }}
-            >
+          <Nav user={user} />
+          <div className="h-full overflow-hidden  flex  items-center  justify-center mt-8">
+            <div className="h-full  overflow-y-auto xl:w-1/2 p-5  ">
               {messages?.map((message) => (
                 <TweetBox key={message.id} message={message} />
               ))}
             </div>
             <span ref={scroll}></span>
           </div>
-
           <Message scroll={scroll} />
         </>
       )}
+      ;
     </div>
   );
 }
-
-//https://www.freecodecamp.org/news/building-a-real-time-chat-app-with-reactjs-and-firebase/

@@ -5,12 +5,19 @@ export default {
     extend: {
       colors: {
         primary: "#5755FE",
-        secondry: "#8B93FF",
+        secondary: "#8B93FF",
         background: "#FFF7FC",
-        DarkBlue: "#14171A",
-        LightBlue: "#E1F5FE",
-        Txt: "#657786",
-        LightGray: "#E8F0F3",
+        darkBlue: "#14171A",
+        lightBlue: "#E1F5FE",
+        txt: "#657786",
+        lightGray: "#E8F0F3",
+        // Dark mode colors
+        backgroundDark: "#14171A",
+        surfaceDark: "#1A202C",
+        primaryDark: "#5755FE",
+        secondaryDark: "#8B93FF",
+        txtDark: "#E8E8E8", // Adjusted for readability
+        lightGrayDark: "#657786",
       },
     },
   },

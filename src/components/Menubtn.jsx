@@ -12,24 +12,23 @@ function Menubtn({ user }) {
   const handleLogOut = async () => {
     await auth.signOut();
     navigateTo("/");
-    console.log("clicked");
     setShowOptions(!showOptions);
   };
 
   return (
-    <>
+    <div className="mr-2 gap-3">
       <img
         src={menu}
         onClick={() => setShowOptions(!showOptions)}
-        className="w-8 h-8"
+        className="w-8 h-8 bg-white rounded-xl"
       />
 
       {showOptions && (
         <div
-          className="absolute top-14 right-1
-        bg-background border border-gray-200 rounded-lg shadow-lg p-2  max-w-30 "
+          className="absolute top-14 
+        bg-background border border-gray-200 rounded-lg shadow-lg p-2"
         >
-          <div className="flex items-center justify-center mb-4">
+          <div className="mb-4">
             <img
               src={photoURL}
               alt="User Avatar"
@@ -45,7 +44,7 @@ function Menubtn({ user }) {
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

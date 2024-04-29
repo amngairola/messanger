@@ -1,10 +1,10 @@
 import React from "react";
-import login from "../assets/login.svg";
+import image from "../assets/user-profile.svg";
 
-const Img = () => {
+const Img = ({ src, alt, ...props }) => {
   return (
     <div className="">
-      <img src={login} alt="Login" />
+      <img src={src ? src : image} alt={alt} {...props} />
     </div>
   );
 };
