@@ -5,6 +5,7 @@ import beforeLike from "../assets/before-like.svg";
 import afterLike from "../assets/after-like.svg";
 import replay from "../assets/bx-message-rounded.svg";
 import { Img } from "../Index";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function TweetBox({ message }) {
   const messageStyle = {
@@ -13,11 +14,16 @@ function TweetBox({ message }) {
     overflow: "hidden",
     wordWrap: "break-word",
   };
-
+  const navigateTo = useNavigate();
   const [like, setLike] = useState(true);
 
+  const handleClick = () => navigateTo("/preview");
+
   return (
-    <div className="flex top-0 items-start mt-5 lg:mt-5 lg:w-full m-5 lg:m-5 lg:p-3 bg-surfaceDark text-white relative  bg-opacity-30">
+    <div
+      className="flex top-0 items-start mt-5 lg:mt-5 lg:w-full m-5 lg:m-5 lg:p-3 bg-surfaceDark text-white relative  bg-opacity-30"
+      onClick={handleClick}
+    >
       <div className="flex items-center">
         <Img
           src={message.avatar}

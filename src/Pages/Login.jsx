@@ -5,6 +5,9 @@ import login from "../assets/login.svg";
 import { auth, gitProvider, googleProvider } from "../Firebase";
 import { signInWithPopup } from "firebase/auth";
 import { ErrorDialog, Img } from "../Index";
+import bgImg from "../assets/login-bg.png";
+import gitImg from "../assets/bxl-github.svg";
+import googleImg from "../assets/bxl-google.svg";
 
 function Login() {
   const [user, setUser] = useState(null);
@@ -46,51 +49,51 @@ function Login() {
   const handleCloseErrorDialog = () => {
     setOpenErrorDialog(false);
   };
-
+  {
+    /* bg-surfaceDark  */
+  }
   return (
-    <div className="flex w-full h-screen ">
-      <div className="w-1/2 bg-primary flex justify-center items-center">
-        <div
-          id="left"
-          className="  bg-gray-500 rounded-xl border shadow-lg border-gray-200 bg-opacity-20 p-4 m-3"
-        >
-          {openErrorDialog && (
-            <ErrorDialog
-              open={openErrorDialog}
-              error={error}
-              onClose={handleCloseErrorDialog}
-            />
-          )}
-          <h2 className="text-center text-2xl font-bold leading-tight mt-5">
-            Connect With Others
-          </h2>
-          <div className=" flex flex-col items-center">
-            <div
-              className="bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-center mt-7 cursor-pointer  w-60 h-10  p-2 flex justify-center"
-              onClick={signInWithGoogle}
-            >
-              <box-icon name="google" type="logo"></box-icon>{" "}
-              <p className="pl-2">Continue With Google</p>
-            </div>
-            <br />
-            <div
-              className="bg-background hover:bg-blue-900 text-black  rounded-lg text-center cursor-pointer w-60 h-10 flex p-2 justify-center items-center"
-              onClick={signInWithGitHub}
-            >
-              <box-icon className="w-8" type="logo" name="github"></box-icon>{" "}
-              <p className="pl-2"> Continue With Git</p>
-            </div>
+    <div
+      className="w-full h-screen flex justify-center items-center"
+      style={{
+        backgroundImage: `url(${bgImg})`,
+        backgroundSize: "fit",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="  bg-gray-500 rounded-xl border shadow-lg border-gray-200 bg-opacity-20 p-4 ">
+        {openErrorDialog && (
+          <ErrorDialog
+            open={openErrorDialog}
+            error={error}
+            onClose={handleCloseErrorDialog}
+          />
+        )}
+        <h2 className="text-center text-2xl font-bold leading-tight mt-5">
+          Connect With Others
+        </h2>
+        <div className=" flex flex-col items-center">
+          <div
+            className="bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-center mt-7 cursor-pointer  w-60 h-10  p-2 flex justify-center"
+            onClick={signInWithGoogle}
+          >
+            <Img src={googleImg} alt={"google"} />
+            <p className="pl-2">Continue With Google</p>
           </div>
-          <p className="text-center mt-5">
-            By creating an account you agree to our terms and conditions
-          </p>
-        </div>
-      </div>
+          <br />
+          <div
+            className="bg-background hover:bg-blue-900 text-black  rounded-lg text-center cursor-pointer w-60 h-10 flex p-2 justify-center items-center"
+            onClick={signInWithGitHub}
+          >
+            <Img src={gitImg} alt={"git"} />
 
-      <div id="right" className="w-1/2">
-        <div className="flex justify-center items-center h-screen bg-gray-200">
-          <Img src={login} alt={"login img"} />
+            <p className="pl-2"> Continue With Git</p>
+          </div>
         </div>
+        <p className="text-center mt-5">
+          By creating an account you agree to our terms and conditions
+        </p>
       </div>
     </div>
   );

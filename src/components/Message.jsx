@@ -2,8 +2,8 @@ import { Button, ErrorDialog } from "../Index";
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { auth, db } from "../Firebase";
-
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
 function Message() {
   const { user } = useAuth();
 
@@ -26,12 +26,13 @@ function Message() {
     await addDoc(collection(db, "thread"), {
       avatar: photoURL,
       createdAt: serverTimestamp(),
+      likes: 0,
+      replies: [],
       thread: tweet,
       userId: uid,
       username: displayName,
     });
     setTweet("");
-    scroll.current.scrollIntoView({ behavior: "smooth" });
   };
 
   const handleCloseErrorDialog = () => {

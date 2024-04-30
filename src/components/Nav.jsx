@@ -1,7 +1,7 @@
 import React from "react";
 
 import "@reach/menu-button/styles.css";
-import { Menubtn, NavEle } from "../Index";
+import { Menubtn } from "../Index";
 import { auth } from "../Firebase";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +17,15 @@ function Nav() {
   const { user } = useAuth();
   const navigateTo = useNavigate();
 
+  const handleNavigateToEdit = () => {
+    console.log("Clicked to edit");
+    navigateTo("/edit");
+  };
+
+  const handleNavigateToChat = () => {
+    console.log("Clicked to chat");
+    navigateTo("/chats");
+  };
   return (
     <div className="fixed inset-0 bg-surfaceDark bg-opacity-80 rounded-md w-full h-12 flex flex-row justify-between items-center px-4 sm:px-8 py-2 sm:py-4 z-10">
       <div className="flex items-center">
@@ -31,8 +40,12 @@ function Nav() {
         </span>
       </div>
       <div className="sm:w-full xl:w-50 flex items-center justify-center gap-10 mt-4 ">
-        <Img src={HomeBefore} alt={"home"} className="w-12" />
-        <Img src={EditBefore} alt={"edit"} className="w-12" />
+        <div onClick={handleNavigateToChat} className="bg-red-400">
+          <Img src={HomeBefore} alt={"home"} className="w-12" />
+        </div>
+        <div onClick={handleNavigateToEdit} className="bg-blue-400">
+          <Img src={EditBefore} alt={"edit"} className="w-12" />
+        </div>
       </div>
 
       <div className="flex items-center space-x-4">

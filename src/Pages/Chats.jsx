@@ -47,14 +47,14 @@ export default function Chats() {
         <>
           <Nav user={user} />
           <div className="h-full overflow-hidden  flex  items-center  justify-center mt-8">
-            <div className="h-full  overflow-y-auto xl:w-1/2 p-5  ">
+            <div className="h-full overflow-y-auto xl:w-1/2 p-5  ">
               {messages?.map((message) => (
                 <TweetBox key={message.id} message={message} />
               ))}
             </div>
             <span ref={scroll}></span>
           </div>
-          <Message scroll={scroll} />
+          <Message />
         </>
       )}
       ;
