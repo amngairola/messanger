@@ -11,12 +11,10 @@
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.9",
-    "@reach/menu-button": "^0.18.0",
     "@react-three/drei": "^9.105.4",
     "@tailwindcss/forms": "^0.5.7",
     "@testing-library/jest-dom": "^6.4.2",
     "axios": "^1.6.8",
-    "boxicons": "^2.1.4",
     "drei": "^2.2.21",
     "firebase": "^10.10.0",
     "firebase-auth": "^0.1.2",
@@ -27,8 +25,6 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-router-dom": "^6.23.0",
     "react-scripts": "^5.0.1",
-    "react-three-fiber": "^6.0.13",
-    "three": "^0.163.0",
     "user-events": "^0.0.6",
     "web-vitals": "^3.5.2"
   },

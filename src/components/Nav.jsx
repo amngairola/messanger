@@ -1,6 +1,5 @@
 import React from "react";
 
-import "@reach/menu-button/styles.css";
 import { Menubtn } from "../Index";
 import { auth } from "../Firebase";
 import { useAuth } from "../context/AuthContext";
