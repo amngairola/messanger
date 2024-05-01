@@ -64,3 +64,5 @@ export default Login;
 ///auth guide - https://github.com/firebase/snippets-web/tree/1abb6ce1a784ae5552946dff5f1f5aab7dcbda30/snippets/auth-next/manage
 
 //https://blog.logrocket.com/user-authentication-firebase-react-apps/
+
+//firebase docs : https://firebase.google.com/docs/firestore/query-data/get-data

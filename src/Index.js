@@ -12,6 +12,7 @@ import Message from "./components/Message";
 import TweetBox from "./components/TweetBox";
 import Edit from "./Pages/Edit";
 import Preview from "./Pages/Preview";
+import ProgressBar from "./components/ProgressBar";
 
 export {
   Login,
@@ -27,4 +28,5 @@ export {
   TweetBox,
   Edit,
   Preview,
+  ProgressBar,
 };

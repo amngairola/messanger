@@ -1,4 +1,3 @@
-import { Spinner } from "@material-tailwind/react";
 import "../index.css";
 
 function Loading() {

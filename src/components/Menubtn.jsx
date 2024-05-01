@@ -5,13 +5,13 @@ import menu from "../assets/bx-menu.svg";
 
 function Menubtn({ user }) {
   const { displayName, photoURL } = user;
-  const navigateTo = useNavigate();
+  const navigate = useNavigate();
   const { signOut } = auth;
   const [showOptions, setShowOptions] = useState(false);
 
   const handleLogOut = async () => {
     await auth.signOut();
-    navigateTo("/");
+    navigate("/");
     setShowOptions(!showOptions);
   };
 

@@ -4,7 +4,7 @@ import "@reach/menu-button/styles.css";
 import { Menubtn } from "../Index";
 import { auth } from "../Firebase";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 import logo from "../assets/icone.png";
 import HomeBefore from "../assets/home-before.svg";
@@ -32,21 +32,21 @@ function Nav() {
         <img
           src={logo}
           alt="user image"
-          className="h-13 w-13 sm:h-10 sm:w-10 rounded-full border border-gray-300 p-1"
+          className="h-10 w-10 sm:h-10 sm:w-10 rounded-full border border-gray-300 p-1"
         />
 
         <span className="ml-2 text-white text-sm sm:text-base w-full">
           {user.displayName}
         </span>
       </div>
-      <div className="sm:w-full xl:w-50 flex items-center justify-center gap-10 mt-4 ">
-        <div onClick={handleNavigateToChat} className="bg-red-400">
+      {/* <div className="sm:w-full xl:w-50 flex items-center justify-center gap-10 mt-4 ">
+        <button onClick={handleNavigateToChat} className="bg-red-400">
           <Img src={HomeBefore} alt={"home"} className="w-12" />
-        </div>
-        <div onClick={handleNavigateToEdit} className="bg-blue-400">
+        </button>
+        <button onClick={handleNavigateToEdit} className="bg-blue-400">
           <Img src={EditBefore} alt={"edit"} className="w-12" />
-        </div>
-      </div>
+        </button>
+      </div> */}
 
       <div className="flex items-center space-x-4">
         <Menubtn user={user} />

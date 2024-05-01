@@ -9,9 +9,10 @@ import {
   orderBy,
   onSnapshot,
   limit,
+  doc,
+  getDoc,
 } from "firebase/firestore";
 
-import InfiniteScroll from "react-infinite-scroll-component";
 import { useAuth } from "../context/AuthContext";
 
 export default function Chats() {
@@ -28,36 +29,34 @@ export default function Chats() {
       limit(50)
     );
 
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const fetchedMessages = [];
-      querySnapshot.forEach((doc) => {
-        fetchedMessages.push({ ...doc.data(), id: doc.id });
-      });
-      setMessages(fetchedMessages);
-    });
+    const unsubscribe = onSnapshot(
+      q,
+      (querySnapshot) => {
+        const fetchedMessages = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setMessages(fetchedMessages);
+      },
+      (error) => {
+        console.error("Error fetching messages:", error);
+      }
+    );
 
     return () => unsubscribe();
   }, []);
 
   return (
     <div className="w-full h-full">
-      {!user ? (
-        <Loading />
-      ) : (
-        <>
-          <Nav user={user} />
-          <div className="h-full overflow-hidden  flex  items-center  justify-center mt-8">
-            <div className="h-full overflow-y-auto xl:w-1/2 p-5  ">
-              {messages?.map((message) => (
-                <TweetBox key={message.id} message={message} />
-              ))}
-            </div>
-            <span ref={scroll}></span>
-          </div>
-          <Message />
-        </>
-      )}
-      ;
+      <Nav user={user} />
+      <div className="flex justify-center mt-8">
+        <div className="w-full max-w-xl p-5 overflow-y-auto">
+          {messages?.map((message) => (
+            <TweetBox key={message.id} message={message} />
+          ))}
+        </div>
+      </div>
+      <Message />
     </div>
   );
 }
