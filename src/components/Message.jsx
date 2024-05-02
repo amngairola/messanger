@@ -1,4 +1,4 @@
-import { Button, ErrorDialog, Img, ProgressBar } from "../Index";
+import { Button, ErrorDialog } from "../Index";
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { auth, db } from "../Firebase";
@@ -9,6 +9,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+
 import {
   collection,
   addDoc,
@@ -44,11 +45,14 @@ function Message() {
       setOpenErrorDialog(true);
     }
     console.log(tweet);
-
+    //getting current user
     const { uid, displayName, photoURL } = auth.currentUser;
+    //getting storage for storing image
     const storage = getStorage();
+    //creating storage reference
     const storageRef = ref(storage, `images/${file.name}`);
 
+    //uploadBytes used for uploading image to the sorage
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -65,8 +69,13 @@ function Message() {
       },
       () => {
         // Upload completed successfully
+        /*
+                  creating a url for the image then seting the url 
+          */
         getDownloadURL(storageRef).then((downloadURL) => {
+          //creating a refrence for the database
           const threadRef = collection(db, "thread");
+
           setDoc(doc(threadRef, `${tweet}`), {
             avatar: photoURL,
             createdAt: serverTimestamp(),

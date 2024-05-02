@@ -1,29 +1,68 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
 import beforeLike from "../assets/before-like.svg";
 import afterLike from "../assets/after-like.svg";
 import replay from "../assets/bx-message-rounded.svg";
 import { Img } from "../Index";
-import { Navigate, useNavigate } from "react-router-dom";
+import { auth, db } from "../Firebase";
+import {
+  collection,
+  addDoc,
+  doc,
+  setDoc,
+  serverTimestamp,
+  query,
+  onSnapshot,
+} from "firebase/firestore";
 
 function TweetBox({ message }) {
+  const { uid } = auth.currentUser;
+
+  const collectionRef = collection(db, "likes");
   const messageStyle = {
     maxWidth: "400px",
     maxHeight: "200px",
     overflow: "hidden",
     wordWrap: "break-word",
   };
-  const navigateTo = useNavigate();
-  const [like, setLike] = useState(true);
 
-  const handleClick = () => navigateTo("/preview");
+  const [like, setLike] = useState(false);
+  const [likes, setLikes] = useState([]);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    const q = query(collection(db, "likes"));
+
+    const fetchLikes = onSnapshot(
+      q,
+      (querySnapshot) => {
+        const fetchedLikes = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }));
+        setLikes(fetchedLikes);
+      },
+      (error) => {
+        console.error("Error fetching messages:", error);
+      }
+    );
+
+    return () => fetchLikes();
+  }, []);
+
+  const handleLike = async () => {
+    setLike(!like);
+
+    await setDoc(doc(collectionRef, `${uid}`), {
+      image: message.image,
+      isLiked: !like,
+      uid,
+    });
+  };
 
   return (
-    <div
-      className="flex top-0 items-start mt-5 lg:mt-5 lg:w-full m-5 lg:m-5 lg:p-3 bg-surfaceDark text-white relative  bg-opacity-30"
-      onClick={handleClick}
-    >
+    <div className="flex top-0 items-start mt-5 lg:mt-5 lg:w-full m-5 lg:m-5 lg:p-3 bg-surfaceDark text-white relative  bg-opacity-30">
       <div className="flex items-center">
         <Img
           src={message.avatar}
@@ -39,9 +78,9 @@ function TweetBox({ message }) {
           >
             {message.username}
           </p>
-          <p id="tweet" className="text-gray-900 text-xs lg:text-sm">
-            {message.time}
-          </p>
+          {/* <p id="tweet" className="text-white text-xs lg:text-sm">
+            {message.createdAt}
+          </p> */}
         </div>
         <p className="text-sm lg:text-base text-gray-400" style={messageStyle}>
           {message.thread}
@@ -54,10 +93,12 @@ function TweetBox({ message }) {
 
         <div className="flex items-center mt-2">
           <div className="flex items-center mr-2">
+            <p className="">{likes.length}</p>
+            {console.log(likes)}
             <Img
-              src={like ? beforeLike : afterLike}
+              src={!like ? beforeLike : afterLike}
               className="p-3 m-3"
-              onClick={() => setLike(!like)}
+              onClick={handleLike}
             />
             Like
           </div>

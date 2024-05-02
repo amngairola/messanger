@@ -7,10 +7,10 @@ import Img from "./components/Img";
 
 import Menubtn from "./components/Menubtn";
 import ErrorDialog from "./components/ErrorDialog";
-import Allusers from "./components/Allusers";
+
 import Message from "./components/Message";
 import TweetBox from "./components/TweetBox";
-import Edit from "./Pages/Edit";
+
 import Preview from "./Pages/Preview";
 import ProgressBar from "./components/ProgressBar";
 
@@ -22,11 +22,9 @@ export {
   Loading,
   Img,
   Menubtn,
-  Allusers,
   ErrorDialog,
   Message,
   TweetBox,
-  Edit,
   Preview,
   ProgressBar,
 };
